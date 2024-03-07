@@ -1,8 +1,8 @@
-# Rick and Morty React
+# React + Vite
 
-Create a project for the Rick and Morty show. By the end of this assignment your project should meet the following requirements:
-  
-  - Vite + React Development Environment
-  - HomePage.jsx, App.jsx, router.jsx
-  - React Browser Router connected to App.jsx
-  - HomePage.jsx should render a quick "Attention Getter" to get people to watch the show at [http://127.0.0.1:5173/](http://127.0.0.1:5173/)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
