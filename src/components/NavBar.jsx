@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import galaxyLogo from './assets/galaxy-svgrepo-com.svg';
+import { useState } from 'react';
+import galaxyLogo from '../assets/galaxy-svgrepo-com.svg';
 import { Link } from 'react-router-dom';
 import {
   Collapse,
@@ -32,6 +32,9 @@ function Example(args) {
             </NavItem>
             <NavItem>
               <NavLink tag={Link} to="/characters">Characters</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink tag={Link} to="/favorites">Favorites</NavLink>
             </NavItem>
           </Nav>
           <NavbarText><img className="navIcon" src={galaxyLogo} /></NavbarText>

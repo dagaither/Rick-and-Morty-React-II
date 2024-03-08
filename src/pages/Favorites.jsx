@@ -1,29 +1,16 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import CharacterCard from '../components/CharacterCard';
+import { useOutletContext } from 'react-router-dom';
 
-const Characters = () => {
+const Favorites = () => {
     const [characters, setCharacters] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const { favorites, addFavorites, removeFavorites, checkFavorite } = useOutletContext();
 
     useEffect(() => {
-        const fetchCharacters = async () => {
-            try {
-                const response = await fetch(`https://rickandmortyapi.com/api/character?page=${currentPage}`);
-                const data = await response.json();
-                setCharacters(data.results);
-                setTotalPages(data.info.pages);
-                console.log(characters)
-                
-            } catch (error) {
-                console.error("Error fetching character data", error);
-            }
-        };
-
-        fetchCharacters();
-    }, [currentPage]);
-    
-
+        filterFavorites(); // Fetch character details when the component mounts or when favorites change
+    }, [currentPage, favorites]);
 
     const handlePrevPage = () => {
         setCurrentPage(Math.max(currentPage - 1, 1));
@@ -41,9 +28,24 @@ const Characters = () => {
         setCurrentPage(totalPages);
     };
 
+    const filterFavorites = async () => {
+        try {
+            const promises = favorites.map(async favorite => {
+                const response = await fetch(`https://rickandmortyapi.com/api/character/${favorite}`);
+                const data = await response.json();
+                return data;
+            });
+
+            const charactersData = await Promise.all(promises);
+            setCharacters(charactersData);
+        } catch (error) {
+            console.error("Error fetching character data", error);
+        }
+    }
+
     return (
         <div>
-            <h2 className="mainH2">Rick and Morty Characters</h2>
+            <h2 className="mainH2">Favorites</h2>
             <div className="card-container" style={{ marginTop: "2rem", display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
 
             {characters.map(c =>
@@ -66,4 +68,4 @@ const Characters = () => {
     );
 };
 
-export default Characters;
+export default Favorites;
