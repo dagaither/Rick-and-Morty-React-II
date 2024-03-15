@@ -20,7 +20,8 @@ function Example(args) {
   return (
     <div>
       <Navbar className="navbar-expand-sm navbar-light bg-secondary fixed-top">
-        <NavbarBrand href="https://www.youtube.com/results?search_query=rick+and+morty" target="_blank">Watch!</NavbarBrand>
+        <NavbarBrand><navbar-brand>Rick and Morty</navbar-brand></NavbarBrand>
+        {/* <navbar-brand><h5>Rick and Morty</h5></navbar-brand> */}
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>

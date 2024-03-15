@@ -21,26 +21,8 @@ const Characters = () => {
         };
 
         fetchCharacters();
-    }, [currentPage]);
+    }, []);
     
-
-
-    const handlePrevPage = () => {
-        setCurrentPage(Math.max(currentPage - 1, 1));
-    };
-
-    const handleNextPage = () => {
-        setCurrentPage(Math.min(currentPage + 1, totalPages));
-    };
-
-    const handleFirstPage = () => {
-        setCurrentPage(1);
-    };
-    
-    const handleLastPage = () => {
-        setCurrentPage(totalPages);
-    };
-
     return (
         <div>
             <h2 className="mainH2">Rick and Morty Characters</h2>

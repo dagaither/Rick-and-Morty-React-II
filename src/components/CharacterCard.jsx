@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const CharacterCard = ({ name, id, imgUrl }) => {
     // const navigate = useNavigate();
-    const { addFavorites, removeFavorites, checkFavorite } = useOutletContext();
+    const { favorites, addFavorites, removeFavorites, checkFavorite } = useOutletContext();
     const routeCharacter = `/characterdetailspage/${id}`;
     const [heart, setHeart] = useState(heartEmpty)
     const isFavorite = checkFavorite(id)
@@ -19,10 +19,13 @@ const CharacterCard = ({ name, id, imgUrl }) => {
           setHeart(heartEmpty);
           
         } else {
+          if (favorites.length <= 5) {
           addFavorites(id);
           setHeart(heartFilled);
+        } else {
+          alert("Maximum favorites reached!")
         }
-      };
+      }};
     
     
     return (
